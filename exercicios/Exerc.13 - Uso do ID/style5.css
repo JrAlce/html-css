@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+body {
+    background-color: blanchedalmond;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+div#Centraliza {
+    text-align: center;
+
+    
+  }
+
+h1#principal {
+    display: inline-block;
+    background-color: rgb(4, 109, 0);
+    color: white;
+    padding: 5px 10px; /* opcional, só pra dar um espaço interno */
+    border-radius: 15px; /* opcional, pra deixar os cantos arredondados */
+    text-shadow: 2px 3px 5px blue;
+    
+}
+
+div#FÁCIL {
+    display: inline-block;
+    background-color: rgb(4, 109, 0);
+    color: white;
+    padding: 5px 10px; 
+    border-radius: 15px; 
+    text-shadow: 2px 3px 5px blue;    
+    height: 60px;
+    width: 80px;
+    border: 1px solid blue;
+}
+
+#BÁSICO {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+  }
+  
+  #FÁCIL:hover #BÁSICO {
+    visibility: visible;
+    opacity: 1;
+    text-align: center;
+    background-color: brown;
+  }
+
+  #FÁCIL:hover {
+    background-color: brown;
+  }
+
+  div#INTERMEDIARIO {
+    display: inline-block;
+    background-color: rgb(4, 109, 0);
+    color: white;
+    padding: 5px 10px; 
+    border-radius: 15px; 
+    text-shadow: 2px 3px 5px blue;    
+    height: 60px;
+    width: 80px;
+    border: 1px solid blue;
+}
+
+#MÉDIO {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease; 
+  }
+  
+  #INTERMEDIARIO:hover #MÉDIO {
+    visibility: visible;
+    opacity: 1;
+    text-align: center;
+    background-color: brown;
+  }
+
+  #INTERMEDIARIO:hover {
+    background-color: brown;
+  }
+
+
+  div#DIFICIL {
+    display: inline-block;
+    background-color: rgb(4, 109, 0);
+    color: white;
+    padding: 5px 10px; 
+    border-radius: 15px; 
+    text-shadow: 2px 3px 5px blue;    
+    height: 60px;
+    width: 80px;
+    border: 1px solid blue;
+    
+}
+
+#AVANÇADO {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease; 
+  }
+  
+  #DIFICIL:hover #AVANÇADO {
+    visibility: visible;
+    opacity: 1;
+    text-align: center;
+    background-color: brown;
+  }
+
+  #DIFICIL:hover {
+    background-color: brown;
+    
+  }

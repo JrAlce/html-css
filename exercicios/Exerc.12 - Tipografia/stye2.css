@@ -1,0 +1,44 @@
+@charset "UTF-8"
+
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Kaushan+Script&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: 'Love';
+    src: url(fontes/love\ larry\ ttf.ttf) format('truetype');
+    font-weight: normal;
+    font: normal;
+}
+
+body {font-family: 'Work Sans', Arial, Helvetica, sans-serif;
+font-size: 16px;
+color: black; 
+}
+
+h1{ font-family: 'Fredericka the Great', serif;
+    font-size: 3em;
+    color: black; 
+}
+
+h2 {
+font-family: 'Kaushan Script', serif;
+font-size: 3em;
+color: black; 
+}
+
+h2 {
+    font-family: 'Kaushan Script', serif;
+    font-size: 3em;
+    color: black; 
+    }    
+
+    h3 {
+        font-family: 'Love', Times, serif;
+font-size: 3em;
+font-weight: normal;
+
+    }
+
