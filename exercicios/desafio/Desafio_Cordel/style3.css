@@ -1,0 +1,106 @@
+/* Importação de fontes */
+@charset "UTF-8";
+@font-face {
+  font-family: 'PassionOne';
+  src: url('Fontes/PassionOne-Regular-400.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sriracha';
+  src: url('Fontes/Sriracha-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Variáveis globais */
+:root {
+  --fonte1: Verdana, Geneva, Tahoma, sans-serif;
+  --fonte2: 'PassionOne', cursive; 
+  --fonte3: 'Sriracha', cursive; 
+}
+
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+html, body {
+  background-color: darkgray;
+  min-height: 100vh;
+  font-family: var(--fonte1);
+}
+
+/* Estilos para o cabeçalho */
+header {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+header > h1 {
+  padding-top: 50px;
+  font-variant: small-caps;
+  font-family: var(--fonte2);
+  font-size: 10vw;
+}
+
+header > p {
+  padding-bottom: 50px;
+}
+
+header a, footer a {
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+header:hover, footer a:hover {
+  text-decoration: underline;
+}
+
+/* Ajustes gerais para <pre> */
+section > pre {
+  line-height: 2em;
+  padding-left: 3.1vw;
+  text-align: left;
+  font-family: var(--fonte3);
+  font-size: 3.5vw;
+  /* Removendo padding-top e padding-bottom daqui */
+}
+
+/* Seções com fundo branco */
+section.normal {
+  background-color: white;
+  color: black;
+}
+
+/* Seções com fundo escuro (imagem) */
+section.imagem {
+  background-color: rgb(51, 51, 51);
+  color: white;
+}
+
+/* Estilo específico para o <pre> dentro de section.imagem */
+section.imagem > pre {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.253);
+  font-family: var(--fonte3);
+  margin-top: 91px;
+  margin-left: 31px;
+  margin-bottom: 91px;
+  padding: 0 6px;  /* Zero no vertical, 6px nas laterais */
+  line-height: 2em; /* Mantém o espaçamento entre linhas */
+}
+
+/* Rodapé */
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
