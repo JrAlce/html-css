@@ -10,31 +10,22 @@
 
 table {
     width: 400px;
+    height: 400PX;
     border-collapse:collapse;
-
-    
-}
-
-tr {
-
-
-}
-
-tr.linha {
-    background-color: rgb(208, 255, 0);
+   
 
 }
 
 
 td {
-    border: 1px solid black;
-    padding: 10px;
-
+border: 1px solid black;
+padding: 8px;
+text-align: center;
+vertical-align: middle;
 }
 
-td.dado {
-    background-color: rgb(108, 171, 243);
-    
-
+.numero {
+    text-align: right;
 }
+
 
