@@ -162,13 +162,14 @@ h2 {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    
 }
 
 @media (max-width: 800px) {
     .img-autora {
         background-image: url('imagens/irina-blok-pq.jpg');
     }
-    height: 400px;
+    
 }
 
 .img-android{
