@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+table {
+    width: 500px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+caption{
+    font-size: 1.3em;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    
+}
+
+th {
+    background-color: rgba(128, 128, 128, 0.466);
+}
+
+.destaque {
+    background-color: yellow;
+}
+
+col.cnome {
+    background-color: chartreuse;
+}
+
+col.csexo {
+    background-color: yellow;
+}
+
+col.cgrupo {
+    background-color: rgb(81, 197, 243);
+}
