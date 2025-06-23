@@ -1,1 +1,6 @@
 @charset "UTF-8";
+
+iframe#tela {
+    width: 95vw;
+    height: 400px;
+}
