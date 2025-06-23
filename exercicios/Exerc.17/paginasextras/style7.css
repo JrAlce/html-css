@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    background-color: lightgrey;
+}
+
+
+table {
+    border-collapse: collapse; 
+}
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    background-repeat: ;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.329);
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+div#container {
+
+    overflow-x: auto;
+}
