@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário</title>
+  <style>
+    * { box-sizing: border-box; }
+    fieldset { border: 1px solid #ccc; padding: 12px 16px; margin-bottom: 16px; }
+    legend { font-weight: 600; }
+
+    /* cada opção em uma linha, texto ao lado da caixinha */
+    .option {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: .4rem;
+      cursor: pointer;
+    }
+    .option input { margin: 0; }
+  </style>
+</head>
+<body>
+  <h1>Formulário</h1>
+
+  <form action="cadastro.php" method="get" autocomplete="on">
+    <fieldset>
+      <legend>Sexo</legend>
+      <label class="option"><input type="radio" name="sexo" value="masculino">Masculino</label>
+      <label class="option"><input type="radio" name="sexo" value="feminino">Feminino</label>
+      <label class="option"><input type="radio" name="sexo" value="neutro">Neutro</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Esportes favoritos</legend>
+      <!-- usando array no nome para enviar múltiplos itens -->
+      <label class="option"><input type="checkbox" name="esportes[]" value="futebol">Futebol</label>
+      <label class="option"><input type="checkbox" name="esportes[]" value="basquete">Basquete</label>
+      <label class="option"><input type="checkbox" name="esportes[]" value="natacao">Natação</label>
+      <label class="option"><input type="checkbox" name="esportes[]" value="tenis">Tênis</label>
+    </fieldset>
+
+    <p>
+      <input type="submit" value="Enviar">
+      <input type="reset" value="Limpar">
+    </p>
+  </form>
+</body>
+</html>
