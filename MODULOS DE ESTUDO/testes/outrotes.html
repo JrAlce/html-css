@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Centralização: absolute vs margin auto</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      height: 100vh;
+    }
+    .demo {
+      border: 2px dashed #38bdf8;
+      position: relative;
+      overflow: hidden;
+      background: #1e293b;
+    }
+    .box {
+      height: 150px;
+      width: 150px;
+      background: blue;
+    }
+    /* Cenário absolute */
+    .absolute-demo .box {
+      position: absolute;
+      top: var(--top, 50%);
+      left: var(--left, 50%);
+      transform: translate(-50%, -50%);
+    }
+    /* Cenário margin auto */
+    .margin-demo {
+      display: flex;
+      flex-direction: column;
+    }
+    .margin-demo .spacer {
+      flex: var(--space, 1);
+    }
+    .margin-demo .box {
+      margin: 0 auto;
+    }
+    .controls {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    input[type=range] {
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Centralização: <code>absolute</code> vs <code>margin: auto</code></h1>
+  <div class="container">
+    <!-- Absolute demo -->
+    <div class="demo absolute-demo" id="abs-demo">
+      <div class="box"></div>
+      <div class="controls">
+        <label>Top: <input type="range" id="abs-top" min="0" max="100" value="50">%</label><br>
+        <label>Left: <input type="range" id="abs-left" min="0" max="100" value="50">%</label>
+      </div>
+    </div>
+
+    <!-- Margin auto demo -->
+    <div class="demo margin-demo" id="margin-demo">
+      <div class="spacer" id="top-spacer"></div>
+      <div class="box"></div>
+      <div class="spacer" id="bottom-spacer"></div>
+      <div class="controls">
+        <label>Vertical Center (%): <input type="range" id="margin-space" min="0" max="100" value="50"></label>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Absolute demo controls
+    const absDemo = document.getElementById('abs-demo');
+    document.getElementById('abs-top').addEventListener('input', e => {
+      absDemo.style.setProperty('--top', e.target.value + '%');
+    });
+    document.getElementById('abs-left').addEventListener('input', e => {
+      absDemo.style.setProperty('--left', e.target.value + '%');
+    });
+
+    // Margin auto demo controls
+    const topSpacer = document.getElementById('top-spacer');
+    const bottomSpacer = document.getElementById('bottom-spacer');
+    document.getElementById('margin-space').addEventListener('input', e => {
+      let val = e.target.value / 100;
+      topSpacer.style.flex = val;
+      bottomSpacer.style.flex = 1 - val;
+    });
+  </script>
+</body>
+</html>

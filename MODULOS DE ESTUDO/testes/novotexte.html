@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relative vs Absolute — metáfora da pedra</title>
+  <style>
+    :root{
+      --bg:#0f172a;      /* fundo escuro */
+      --card:#111827;    /* cartões */
+      --accent:#38bdf8;  /* detalhes */
+      --text:#e5e7eb;    /* texto */
+      --mute:#94a3b8;    /* texto fraco */
+      --grass:#10b981;   /* "chão" */
+      --stone:#f59e0b;   /* pedra */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; color:var(--text);
+      background:radial-gradient(1000px 600px at 10% -10%,#1f2937 0%, var(--bg) 60%);
+    }
+    .wrap{max-width:1000px;margin:auto;padding:32px}
+    h1{font-size:clamp(22px,3vw,32px);margin:0 0 8px}
+    p.lead{color:var(--mute);margin:0 0 24px}
+
+    .grid{display:grid;grid-template-columns:1fr;gap:20px}
+    @media (min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+
+    .card{background:linear-gradient(180deg,#0b1220, var(--card));border:1px solid #1f2937;padding:18px 18px 12px;border-radius:18px;box-shadow:0 10px 30px #00000055}
+    .card h2{margin:0 0 6px;font-size:18px}
+    .hint{font-size:13px;color:var(--mute);margin:0 0 14px}
+
+    /* "Chão" (fluxo do documento) */
+    .ground{position:relative;border:1px dashed #334155;border-radius:14px;padding:14px;min-height:120px;background:linear-gradient(180deg,#0b1220,#0b131f)}
+    .row{display:flex;gap:14px;align-items:center}
+
+    .tile{flex:0 0 110px;height:70px;border-radius:14px;background:linear-gradient(180deg,#064e3b,var(--grass));border:1px solid #065f46;display:flex;align-items:center;justify-content:center;font-weight:600}
+    .stone{flex:0 0 110px;height:70px;border-radius:14px;background:linear-gradient(180deg,#9a6700,var(--stone));border:1px solid #b45309;display:flex;align-items:center;justify-content:center;font-weight:800;color:#111}
+
+    /* Caso RELATIVE: a pedra se move visualmente, mas o espaço fica no "chão" */
+    .relative-demo .stone{position:relative; /* offsets via JS */}
+    .relative-demo .stone::before{content:"espaço original";position:absolute;inset:0;border:2px dotted #fde68a;border-radius:14px;color:#fde68a;font-size:11px;display:grid;place-items:center;opacity:.55;mix-blend:screen}
+
+    /* Caso ABSOLUTE: a pedra sai do fluxo e libera o espaço */
+    .absolute-demo .ground{position:relative}
+    .absolute-demo .stone{position:absolute; /* offsets via JS */}
+
+    .controls{display:flex;gap:10px;align-items:center;margin-top:10px}
+    .controls input[type=range]{width:140px}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#0b3a53;border:1px solid #1f3f57;color:#a5e5ff;font-size:12px;font-weight:700;letter-spacing:.02em}
+    .legend{display:flex;gap:12px;align-items:center;margin-top:10px;font-size:13px;color:var(--mute)}
+    .swatch{width:14px;height:14px;border-radius:4px}
+    .swatch.stone{background:var(--stone);border:1px solid #b45309}
+    .swatch.grass{background:var(--grass);border:1px solid #065f46}
+    .swatch.space{background:transparent;border:2px dotted #fde68a}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Relative vs Absolute (metáfora da pedra)</h1>
+    <p class="lead">Mexa os controles para ver a diferença: no <b>relative</b> a pedra desliza visualmente mas o espaço no chão continua lá; no <b>absolute</b> a pedra sai do chão e libera o espaço.</p>
+
+    <div class="grid">
+      <!-- RELATIVE -->
+      <section class="card relative-demo">
+        <h2>position: relative</h2>
+        <p class="hint">A pedra move <em>ela mesma</em>, mas não move o chão nem libera espaço.</p>
+        <div class="ground">
+          <div class="row">
+            <div class="tile">grama</div>
+            <div id="stone-rel" class="stone">pedra</div>
+            <div class="tile">grama</div>
+          </div>
+        </div>
+        <div class="controls">
+          <span class="badge">offset</span>
+          <label>left <input id="rel-left" type="range" min="-80" max="80" value="30"/></label>
+          <label>top <input id="rel-top" type="range" min="-40" max="40" value="10"/></label>
+          <button id="rel-reset">Reset</button>
+        </div>
+        <div class="legend">
+          <span class="swatch stone"></span> pedra
+          <span class="swatch grass"></span> chão (fluxo do documento)
+          <span class="swatch space"></span> espaço original preservado
+        </div>
+      </section>
+
+      <!-- ABSOLUTE -->
+      <section class="card absolute-demo">
+        <h2>position: absolute</h2>
+        <p class="hint">A pedra é retirada do chão (fluxo). O buraco que ela ocupava fica livre e a grama ocupa o lugar.</p>
+        <div class="ground" id="ground-abs">
+          <div class="row" style="position:relative">
+            <div class="tile">grama</div>
+            <!-- este espaço será ocupado pela outra grama quando a pedra sair do fluxo -->
+            <div class="tile">grama</div>
+            <div id="stone-abs" class="stone">pedra</div>
+          </div>
+        </div>
+        <div class="controls">
+          <span class="badge">offset</span>
+          <label>left <input id="abs-left" type="range" min="-80" max="80" value="40"/></label>
+          <label>top <input id="abs-top" type="range" min="-40" max="40" value="-5"/></label>
+          <button id="abs-reset">Reset</button>
+        </div>
+        <div class="legend">
+          <span class="swatch stone"></span> pedra (fora do fluxo)
+          <span class="swatch grass"></span> chão preenchendo o espaço
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Helpers para aplicar offsets
+    const $ = s => document.querySelector(s);
+
+    function wireRelative(stoneSel, leftSel, topSel, resetSel, init){
+      const stone = $(stoneSel), l = $(leftSel), t = $(topSel), r = $(resetSel);
+      const apply = () => { stone.style.left = l.value + 'px'; stone.style.top = t.value + 'px'; };
+      l.addEventListener('input', apply); t.addEventListener('input', apply); r.addEventListener('click', ()=>{l.value=init.left; t.value=init.top; apply();});
+      l.value = init.left; t.value = init.top; apply();
+    }
+
+    function wireAbsolute(stoneSel, leftSel, topSel, resetSel, init){
+      const stone = $(stoneSel), l = $(leftSel), t = $(topSel), r = $(resetSel);
+      const apply = () => { stone.style.left = l.value + 'px'; stone.style.top = t.value + 'px'; };
+      l.addEventListener('input', apply); t.addEventListener('input', apply); r.addEventListener('click', ()=>{l.value=init.left; t.value=init.top; apply();});
+      l.value = init.left; t.value = init.top; apply();
+    }
+
+    wireRelative('#stone-rel','#rel-left','#rel-top','#rel-reset',{left:30, top:10});
+    wireAbsolute('#stone-abs','#abs-left','#abs-top','#abs-reset',{left:40, top:-5});
+  </script>
+</body>
+</html>

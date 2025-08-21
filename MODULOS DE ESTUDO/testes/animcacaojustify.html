@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justify Content & Justify Items Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  /* Justify-content (Flex) */
+  .container {
+    display: flex;
+    border: 2px solid white;
+    background: #222;
+    height: 100px;
+    width: 80%;
+    transition: all 1s ease;
+  }
+
+  /* Justify-items (Grid) */
+  .container2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 2px solid white;
+    background: #222;
+    height: 150px;
+    width: 80%;
+    transition: all 1s ease;
+  }
+
+  .box {
+    background: #4cafef;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- Justify-Content -->
+<h2 id="labelContent">justify-content: center</h2>
+<div class="container" id="justifyContentBox">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<!-- Justify-Items -->
+<h2 id="labelItems">justify-items: center</h2>
+<div class="container2" id="justifyItemsBox">
+  <div class="box">A</div>
+  <div class="box">B</div>
+  <div class="box">C</div>
+</div>
+
+<script>
+const valuesContent = [
+  "center",
+  "end",
+  "flex-end",
+  "flex-start",
+  "left",
+  "right",
+  "space-around",
+  "space-between"
+];
+
+const valuesItems = [
+  "auto",
+  "baseline",
+  "center",
+  "end",
+  "flex-end",
+  "flex-start",
+  "left",
+  "right"
+];
+
+let iContent = 0;
+let iItems = 0;
+
+const contentBox = document.getElementById("justifyContentBox");
+const labelContent = document.getElementById("labelContent");
+
+const itemsBox = document.getElementById("justifyItemsBox");
+const labelItems = document.getElementById("labelItems");
+
+function changeContent() {
+  contentBox.style.justifyContent = valuesContent[iContent];
+  labelContent.textContent = `justify-content: ${valuesContent[iContent]}`;
+  iContent = (iContent + 1) % valuesContent.length;
+}
+
+function changeItems() {
+  itemsBox.style.justifyItems = valuesItems[iItems];
+  labelItems.textContent = `justify-items: ${valuesItems[iItems]}`;
+  iItems = (iItems + 1) % valuesItems.length;
+}
+
+setInterval(changeContent, 2000);
+setInterval(changeItems, 2000);
+
+changeContent();
+changeItems();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <style>
+body {
+  font-family: sans-serif;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+h2 {
+  margin: 15px 0 5px;
+  font-size: 16px;
+}
+
+.caixa {
+  background: green;
+  border: 1px solid white;
+  padding: 5px;
+  text-align: center;
+}
+
+/* layout base */
+.grid {
+  display: grid;
+  gap: 5px;
+  margin-bottom: 20px;
+  background: #333;
+  padding: 5px;
+}
+
+/* 1) fr */
+.grid-fr {
+  grid-template-columns: 1fr 2fr;
+}
+
+/* 2) max-content */
+.grid-max {
+  grid-template-columns: max-content 1fr;
+}
+
+/* 3) min-content */
+.grid-min {
+  grid-template-columns: min-content 1fr;
+}
+
+/* 4) minmax */
+.grid-minmax {
+  grid-template-columns: minmax(100px, 1fr) 2fr;
+}
+
+/* 5) none */
+.grid-none {
+  grid-template-columns: none;
+}
+
+/* 6) repeat */
+.grid-repeat {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* 7) subgrid */
+.grid-pai {
+  grid-template-columns: 1fr 1fr;
+}
+.subgrid {
+  display: grid;
+  grid-template-columns: subgrid; /* só funciona em Firefox por enquanto */
+}
+
+  </style>
+</head>
+<body>
+<div class="exemplo">
+  <h2>1. fr</h2>
+  <div class="grid grid-fr">
+    <div class="caixa">A</div>
+    <div class="caixa">BBBBBBBBB</div>
+  </div>
+
+  <h2>2. max-content</h2>
+  <div class="grid grid-max">
+    <div class="caixa">AAAAAAAAAAAAAAAAAAAAAAAAA</div>
+    <div class="caixa">B</div>
+  </div>
+
+  <h2>3. min-content</h2>
+  <div class="grid grid-min">
+    <div class="caixa">AAAAAAAAAAAAAAAAAAAAAAAAA</div>
+    <div class="caixa">B</div>
+  </div>
+
+  <h2>4. minmax()</h2>
+  <div class="grid grid-minmax">
+    <div class="caixa">AAAAAAAAAAAAAAA</div>
+    <div class="caixa">B</div>
+  </div>
+
+  <h2>5. none</h2>
+  <div class="grid grid-none">
+    <div class="caixa">AAAAAAAAAAAAAAAAA</div>
+    <div class="caixa">B</div>
+  </div>
+
+  <h2>6. repeat()</h2>
+  <div class="grid grid-repeat">
+    <div class="caixa">1</div>
+    <div class="caixa">2</div>
+    <div class="caixa">3</div>
+    <div class="caixa">4</div>
+    <div class="caixa">5</div>
+  </div>
+
+  <h2>7. subgrid (suporte parcial em navegadores)</h2>
+  <div class="grid grid-pai">
+    <div class="subgrid">
+      <div class="caixa">A</div>
+      <div class="caixa">B</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

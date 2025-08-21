@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <style>
+
+
+
+        .pai {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(4, 1fr);
+            gap: 5px; 
+            height: 400px; 
+            width: 600px;
+            background-color: lightgray;   
+            
+        }
+
+        .caixa {  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bolder;
+        }
+
+    .c1 { background: crimson; 
+        grid-row: 1 /  5;
+        grid-column: 1;
+     
+    }
+    .c2 { background: purple; grid-column: 2;}
+    .c3 { background: lime; grid-column: 2;}
+    .c4 { background: cyan; grid-column: 2;}
+    .c5 { background: orange; grid-column: 2;}
+ 
+
+    </style>
+</head>
+<body>
+                   
+                
+                    <div class="pai">
+                        <div class="caixa c1">1</div>
+                        <div class="caixa c2">2</div>
+                        <div class="caixa c3">3</div>  
+                        <div class="caixa c4">4</div>
+                        <div class="caixa c5">5</div>
+                    </div>
+                    
+    
+</body>
+</html>

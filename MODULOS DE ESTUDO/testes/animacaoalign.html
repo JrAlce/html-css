@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Align Content & Align Items Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid white;
+    background: #222;
+    height: 200px;
+    width: 80%;
+    transition: all 1s ease;
+  }
+
+  .container2 {
+    display: flex;
+    border: 2px solid white;
+    background: #222;
+    height: 100px;
+    width: 80%;
+    transition: all 1s ease;
+  }
+
+  .box {
+    background: #4cafef;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<!-- Align-Content -->
+<h2 id="labelContent">align-content: center</h2>
+<div class="container" id="alignContentBox">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+  <div class="box">6</div>
+  <div class="box">7</div>
+  <div class="box">8</div>
+</div>
+
+<!-- Align-Items -->
+<h2 id="labelItems">align-items: center</h2>
+<div class="container2" id="alignItemsBox">
+  <div class="box" style="height:30px">A</div>
+  <div class="box" style="height:60px">B</div>
+  <div class="box" style="height:90px">C</div>
+</div>
+
+<script>
+const valuesContent = [
+  "center",
+  "end",
+  "flex-end",
+  "flex-start",
+  "space-around",
+  "space-between"
+];
+
+const valuesItems = [
+  "baseline",
+  "center",
+  "end",
+  "flex-end",
+  "flex-start",
+  "normal",
+  "safe"
+];
+
+let iContent = 0;
+let iItems = 0;
+
+const contentBox = document.getElementById("alignContentBox");
+const labelContent = document.getElementById("labelContent");
+
+const itemsBox = document.getElementById("alignItemsBox");
+const labelItems = document.getElementById("labelItems");
+
+function changeContent() {
+  contentBox.style.alignContent = valuesContent[iContent];
+  labelContent.textContent = `align-content: ${valuesContent[iContent]}`;
+  iContent = (iContent + 1) % valuesContent.length;
+}
+
+function changeItems() {
+  itemsBox.style.alignItems = valuesItems[iItems];
+  labelItems.textContent = `align-items: ${valuesItems[iItems]}`;
+  iItems = (iItems + 1) % valuesItems.length;
+}
+
+setInterval(changeContent, 2000);
+setInterval(changeItems, 2000);
+
+changeContent();
+changeItems();
+</script>
+
+</body>
+</html>

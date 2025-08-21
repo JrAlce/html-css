@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+
+
+
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    
+}
+
+.caixa1 {
+    
+  height: 500px;
+  width: 500px;
+  background-color: blue;
+  position: absolute;
+}
+
+.caixa2 {
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background-color: red;
+   
+}
+
+
+.caixa3 {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background-color: yellow;
+    place-content: ;
+   
+}
+
+
+
